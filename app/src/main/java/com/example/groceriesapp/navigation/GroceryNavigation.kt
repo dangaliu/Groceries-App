@@ -5,6 +5,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.groceriesapp.composable.screen.onBoarding.view.OnBoardingScreen
+import com.example.groceriesapp.composable.screen.phoneAuth.view.PhoneAuthScreen
 import com.example.groceriesapp.composable.screen.splash.view.SplashScreen
 
 @Composable
@@ -20,6 +21,10 @@ fun GroceryNavigation(navController: NavHostController) {
         
         composable(route = NavConstants.onBoarding) {
             OnBoardingScreen(navController = navController)
+        }
+
+        composable(route = NavConstants.phoneAuth) {
+            PhoneAuthScreen(navController = navController)
         }
     }
 }

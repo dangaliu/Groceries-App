@@ -4,4 +4,5 @@ object NavConstants {
 
     val splash = "splash"
     val onBoarding = "onBoarding"
+    val phoneAuth = "phoneAuth"
 }

@@ -18,6 +18,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriesapp.navigation.GroceryNavigation
 import com.example.groceriesapp.ui.theme.GroceriesAppTheme
+import com.example.groceriesapp.ui.theme.Primary
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 class MainActivity : ComponentActivity() {
@@ -38,7 +39,7 @@ class MainActivity : ComponentActivity() {
         val systemUiController = rememberSystemUiController()
 
         LaunchedEffect(Unit) {
-            systemUiController.isStatusBarVisible = false
+            systemUiController.setSystemBarsColor(Primary)
         }
 
         Scaffold(
