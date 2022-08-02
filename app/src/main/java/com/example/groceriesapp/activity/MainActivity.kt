@@ -20,7 +20,9 @@ import com.example.groceriesapp.navigation.GroceryNavigation
 import com.example.groceriesapp.ui.theme.GroceriesAppTheme
 import com.example.groceriesapp.ui.theme.Primary
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

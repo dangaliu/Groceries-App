@@ -40,6 +40,10 @@ fun SplashScreen(
 
     LaunchedEffect(Unit) {
         delay(2000)
-        navController.navigate(NavConstants.onBoarding)
+        navController.navigate(NavConstants.onBoarding) {
+            popUpTo(NavConstants.splash) {
+                inclusive = true
+            }
+        }
     }
 }

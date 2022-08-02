@@ -4,7 +4,7 @@
     package="com.example.groceriesapp">
 
     <application
-        android:name=".app.GroceryApplication"
+        android:name=".GroceryApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

@@ -1,9 +1,10 @@
-package com.example.groceriesapp.composable.screen.phoneAuth.view
+package com.example.groceriesapp.composable.screen.auth.view
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -12,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -19,12 +21,13 @@ import androidx.navigation.NavHostController
 import com.example.groceriesapp.R
 import com.example.groceriesapp.composable.component.GroceryIconButton
 import com.example.groceriesapp.composable.component.GroceryTextField
+import com.example.groceriesapp.navigation.NavConstants
 import com.example.groceriesapp.ui.theme.GroceryScreenBackgroundLight
 import com.example.groceriesapp.ui.theme.subTitleStyle
 import com.example.groceriesapp.ui.theme.titleStyle
 
 @Composable
-fun PhoneAuthScreen(
+fun AuthScreen(
     navController: NavHostController
 ) {
     Box(
@@ -61,7 +64,8 @@ fun PhoneAuthScreen(
                     phone = it
                 },
                 icon = R.drawable.phone_country_image,
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier.fillMaxWidth(),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
             )
             Spacer(modifier = Modifier.height(40.dp))
             Text(
@@ -81,7 +85,9 @@ fun PhoneAuthScreen(
                 icon = R.drawable.ic_google,
                 backgroundColor = Color(0xFF5383EC),
                 text = "Continue with Google",
-                onClick = {}
+                onClick = {
+                    navController.navigate(NavConstants.phoneAuth)
+                }
             )
             Spacer(modifier = Modifier.height(20.dp))
             GroceryIconButton(

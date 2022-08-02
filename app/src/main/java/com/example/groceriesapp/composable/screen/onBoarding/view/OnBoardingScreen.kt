@@ -18,7 +18,6 @@ import androidx.navigation.NavHostController
 import com.example.groceriesapp.R
 import com.example.groceriesapp.composable.component.GroceryButton
 import com.example.groceriesapp.navigation.NavConstants
-import com.example.groceriesapp.ui.theme.GroceryLight
 import com.example.groceriesapp.ui.theme.GroceryLightGray
 import com.example.groceriesapp.ui.theme.gilroy
 
@@ -65,7 +64,11 @@ fun OnBoardingScreen(navController: NavHostController) {
             GroceryButton(
                 text = "Get started",
                 onClick = {
-                    navController.navigate(NavConstants.phoneAuth)
+                    navController.navigate(NavConstants.auth) {
+                        popUpTo(NavConstants.onBoarding) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }

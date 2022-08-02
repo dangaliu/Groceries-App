@@ -1,10 +1,13 @@
 package com.example.groceriesapp.composable.component
 
+import android.content.Intent.getIntent
+import android.graphics.BitmapFactory
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.Divider
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
@@ -12,11 +15,11 @@ import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
@@ -24,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.groceriesapp.R
 import com.example.groceriesapp.ui.theme.textFieldTextStyle
+
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -33,7 +37,9 @@ fun GroceryTextField(
     onValueChange: (String) -> Unit,
     startValue: String? = "+880",
     modifier: Modifier = Modifier.fillMaxWidth(),
-    isPassword: Boolean = false
+    isPassword: Boolean = false,
+    focusRequester: FocusRequester? = null,
+    keyboardOptions: KeyboardOptions = KeyboardOptions()
 ) {
     val focusManager = LocalFocusManager.current
     Column(modifier = modifier) {
@@ -67,16 +73,20 @@ fun GroceryTextField(
                         visualTransformation = if (isPassword) PasswordVisualTransformation()
                         else VisualTransformation.None,
                         interactionSource = MutableInteractionSource(),
-                        contentPadding = PaddingValues(0.dp),
+                        contentPadding = PaddingValues(0.dp)
                     )
                 },
                 textStyle = textFieldTextStyle,
                 cursorBrush = SolidColor(Color(0xFF7C7C7C)),
-                modifier = Modifier.fillMaxWidth(),
+                modifier = if (focusRequester is FocusRequester) Modifier
+                    .fillMaxWidth()
+                    .focusRequester(focusRequester)
+                else Modifier.fillMaxWidth(),
                 singleLine = true,
                 keyboardActions = KeyboardActions(onDone = {
                     focusManager.clearFocus()
-                })
+                }),
+                keyboardOptions = keyboardOptions
             )
         }
         Spacer(modifier = Modifier.height(15.dp))
@@ -90,7 +100,7 @@ fun GroceryTextField(
 @Preview(showBackground = true)
 @Composable
 fun GroceryTextFieldPreview() {
-    var value by remember { mutableStateOf("")}
+    var value by remember { mutableStateOf("") }
 
     Box(
         modifier = Modifier.padding(8.dp)
