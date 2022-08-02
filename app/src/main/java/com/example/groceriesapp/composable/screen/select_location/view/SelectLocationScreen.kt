@@ -19,9 +19,12 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriesapp.R
+import com.example.groceriesapp.composable.component.GroceryButton
+import com.example.groceriesapp.composable.component.GrocerySpinner
 import com.example.groceriesapp.composable.screen.phone.view.ActivationCodeInput
 import com.example.groceriesapp.composable.screen.phone.view.PhoneInput
 import com.example.groceriesapp.composable.screen.phone.viewmodel.PhoneAuthState
+import com.example.groceriesapp.navigation.NavConstants
 import com.example.groceriesapp.ui.theme.GroceryIconButtonText
 import com.example.groceriesapp.ui.theme.subTitleStyle
 import com.example.groceriesapp.ui.theme.titleStyle
@@ -86,6 +89,18 @@ fun SelectLocationScreen(
                 modifier = Modifier.align(Alignment.Start)
             )
             Spacer(modifier = Modifier.height(10.dp))
+            GrocerySpinner()
+            Spacer(modifier = Modifier.height(30.dp))
+            Text(
+                text = "Your Area",
+                style = subTitleStyle.copy(fontWeight = FontWeight.SemiBold),
+                modifier = Modifier.align(Alignment.Start)
+            )
+            GrocerySpinner()
+            Spacer(modifier = Modifier.size(40.dp))
+            GroceryButton(text = "Submit", onClick = {
+                navController.navigate(NavConstants.loginSignup)
+            })
         }
     }
 }

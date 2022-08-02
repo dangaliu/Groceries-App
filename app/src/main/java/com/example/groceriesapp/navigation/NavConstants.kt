@@ -7,4 +7,5 @@ object NavConstants {
     val auth = "auth"
     val phoneAuth = "phoneAuth"
     val selectLocation = "selectLocation"
+    val loginSignup = "loginSignup"
 }

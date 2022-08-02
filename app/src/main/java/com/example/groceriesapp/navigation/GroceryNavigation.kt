@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.groceriesapp.composable.screen.onBoarding.view.OnBoardingScreen
 import com.example.groceriesapp.composable.screen.auth.view.AuthScreen
+import com.example.groceriesapp.composable.screen.login_signup.view.LoginSignupScreen
 import com.example.groceriesapp.composable.screen.phone.view.PhoneAuthScreen
 import com.example.groceriesapp.composable.screen.phone.viewmodel.PhoneAuthViewModel
 import com.example.groceriesapp.composable.screen.select_location.view.SelectLocationScreen
@@ -37,6 +38,10 @@ fun GroceryNavigation(navController: NavHostController) {
 
         composable(route = NavConstants.selectLocation) {
             SelectLocationScreen(navController = navController)
+        }
+
+        composable(route = NavConstants.loginSignup) {
+            LoginSignupScreen(navController = navController)
         }
     }
 }
