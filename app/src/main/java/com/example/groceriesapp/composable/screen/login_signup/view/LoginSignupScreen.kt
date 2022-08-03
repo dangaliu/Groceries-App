@@ -1,8 +1,6 @@
 package com.example.groceriesapp.composable.screen.login_signup.view
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
@@ -25,6 +23,7 @@ import com.example.groceriesapp.composable.component.GroceryButton
 import com.example.groceriesapp.composable.component.GroceryTextField
 import com.example.groceriesapp.composable.screen.login_signup.viewmodel.LoginSignupState
 import com.example.groceriesapp.composable.screen.login_signup.viewmodel.LoginSignupViewModel
+import com.example.groceriesapp.navigation.NavConstants
 import com.example.groceriesapp.ui.theme.*
 
 @Composable
@@ -32,10 +31,12 @@ fun LoginSignupScreen(
     navController: NavHostController,
     viewModel: LoginSignupViewModel = hiltViewModel()
 ) {
+    val scrollState = rememberScrollState()
     Box(
         modifier = Modifier
             .fillMaxSize()
             .background(GroceryIconButtonText)
+            .verticalScroll(scrollState)
     ) {
         Image(
             painter = painterResource(R.drawable.phone_auth_background),
@@ -59,7 +60,7 @@ fun LoginSignupScreen(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
             Spacer(modifier = Modifier.height(100.dp))
-            when(viewModel.state.value) {
+            when (viewModel.state.value) {
                 LoginSignupState.LOGIN -> Login(navController = navController)
                 LoginSignupState.SIGNUP -> Signup(navController = navController)
             }
@@ -121,7 +122,13 @@ fun Login(
                 .clickable { }
         )
         Spacer(modifier = Modifier.height(30.dp))
-        GroceryButton(text = "Log In", onClick = {})
+        GroceryButton(text = "Log In", onClick = {
+            navController.navigate(NavConstants.shop) {
+                popUpTo(NavConstants.auth) {
+                    inclusive = true
+                }
+            }
+        })
         Spacer(modifier = Modifier.height(25.dp))
         Text(
             text = AnnotatedString(

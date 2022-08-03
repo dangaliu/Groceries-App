@@ -15,8 +15,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.example.groceriesapp.composable.component.bottombar.GroceryBottomBar
 import com.example.groceriesapp.navigation.GroceryNavigation
+import com.example.groceriesapp.navigation.NavConstants
 import com.example.groceriesapp.ui.theme.GroceriesAppTheme
 import com.example.groceriesapp.ui.theme.Primary
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
@@ -40,13 +43,27 @@ class MainActivity : ComponentActivity() {
         val scaffoldState = rememberScaffoldState()
         val systemUiController = rememberSystemUiController()
 
+        val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
+        val bottomScreens = listOf(
+            NavConstants.shop,
+            NavConstants.explore,
+            NavConstants.cart,
+            NavConstants.favourite,
+            NavConstants.account
+        )
+
         LaunchedEffect(Unit) {
             systemUiController.setSystemBarsColor(Primary)
         }
 
         Scaffold(
             modifier = Modifier.fillMaxSize(),
-            backgroundColor = Color.White
+            backgroundColor = Color.White,
+            bottomBar = {
+                if (currentRoute in bottomScreens) {
+                    GroceryBottomBar(navController = navController)
+                }
+            }
         ) { padding ->
             Box(
                 modifier = Modifier

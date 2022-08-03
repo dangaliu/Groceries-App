@@ -8,4 +8,11 @@ object NavConstants {
     val phoneAuth = "phoneAuth"
     val selectLocation = "selectLocation"
     val loginSignup = "loginSignup"
+
+    // Bottom Bar Screens
+    val shop = "shop"
+    val explore = "explore"
+    val cart = "cart"
+    val favourite = "favourite"
+    val account = "account"
 }
