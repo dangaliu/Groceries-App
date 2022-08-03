@@ -8,10 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.Divider
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Text
-import androidx.compose.material.TextFieldDefaults
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -79,14 +77,16 @@ fun GroceryTextField(
                 textStyle = textFieldTextStyle,
                 cursorBrush = SolidColor(Color(0xFF7C7C7C)),
                 modifier = if (focusRequester is FocusRequester) Modifier
-                    .fillMaxWidth()
+                    .weight(1f)
                     .focusRequester(focusRequester)
                 else Modifier.fillMaxWidth(),
                 singleLine = true,
                 keyboardActions = KeyboardActions(onDone = {
                     focusManager.clearFocus()
                 }),
-                keyboardOptions = keyboardOptions
+                keyboardOptions = keyboardOptions,
+                visualTransformation = if (isPassword) PasswordVisualTransformation()
+                else VisualTransformation.None
             )
         }
         Spacer(modifier = Modifier.height(15.dp))

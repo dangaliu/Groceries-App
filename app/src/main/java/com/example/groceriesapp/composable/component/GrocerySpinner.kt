@@ -73,7 +73,7 @@ fun GrocerySpinner(
                 tint = Color(0xFF7C7C7C),
                 modifier = Modifier
                     .size(7.dp, 13.dp)
-                    .rotate(if (expanded) 270f else 450f)
+                    .rotate(if (expanded) 450f else 270f)
                     .clickable {
                         expanded = !expanded
                         Log.d("expanded", expanded.toString())
