@@ -2,6 +2,7 @@ package com.example.groceriesapp.composable.component
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Surface
@@ -27,10 +28,11 @@ fun GroceryProductCategory(
         title = "Frash Fruits\n" +
                 "& Vegetable",
         color = Color(0xFF53B175)
-    )
+    ),
+    onClick: () -> Unit = {}
 ) {
     Surface(
-        modifier = modifier,
+        modifier = modifier.clickable { onClick() },
         shape = RoundedCornerShape(18.dp),
         border = BorderStroke(
             width = 1.dp,

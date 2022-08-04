@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
@@ -29,8 +30,7 @@ fun GroceryItemComponent(
         title = "Organic Bananas",
         description = "7pcs, Priceg",
         price = "\$4.99"
-    ),
-    imageSize: DpSize = DpSize(100.dp, 80.dp)
+    )
 ) {
     Surface(
         shape = RoundedCornerShape(18.dp),
@@ -48,13 +48,19 @@ fun GroceryItemComponent(
                 Image(
                     painter = painterResource(id = item.image),
                     contentDescription = "",
-                    modifier = Modifier.align(Alignment.CenterHorizontally).size(imageSize.width, imageSize.height)
+                    modifier = Modifier.align(Alignment.CenterHorizontally).sizeIn(
+                        minWidth = 40.dp,
+                        minHeight = 85.dp,
+                        maxWidth = 100.dp,
+                        maxHeight = 100.dp
+                    )
                 )
                 Spacer(modifier = Modifier.height(25.dp))
                 Text(
                     text = item.title,
                     style = subTitleStyle.copy(color = GroceryDark, fontWeight = FontWeight.Bold),
-                    modifier = Modifier.align(Alignment.Start)
+                    modifier = Modifier.align(Alignment.Start),
+                    textAlign = TextAlign.Center
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(

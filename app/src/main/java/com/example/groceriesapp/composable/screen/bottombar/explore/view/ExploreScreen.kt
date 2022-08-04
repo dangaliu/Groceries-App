@@ -14,6 +14,7 @@ import com.example.groceriesapp.composable.component.GroceryCategoryComponent
 import com.example.groceriesapp.composable.component.GroceryProductCategory
 import com.example.groceriesapp.composable.component.GrocerySearchComponent
 import com.example.groceriesapp.composable.screen.bottombar.explore.viewmodel.ExploreViewModel
+import com.example.groceriesapp.navigation.NavConstants
 import com.example.groceriesapp.ui.theme.screenTitleStyle
 
 @Composable
@@ -45,7 +46,9 @@ fun ExploreScreen(
             columns = GridCells.Fixed(2), content = {
                 items(viewModel.categories.size) { i ->
                     val category = viewModel.categories[i]
-                    GroceryProductCategory(item = category)
+                    GroceryProductCategory(item = category, onClick = {
+                        navController.navigate(NavConstants.categoryProducts)
+                    })
                 }
             },
             verticalArrangement = Arrangement.spacedBy(15.dp),
