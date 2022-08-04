@@ -48,3 +48,10 @@ val subTitleStyle = TextStyle(
     fontSize = 16.sp,
     fontWeight = FontWeight.Medium
 )
+
+val screenTitleStyle = TextStyle(
+    color = Color(0xFF181725),
+    fontFamily = gilroy,
+    fontSize = 20.sp,
+    fontWeight = FontWeight.Bold
+)
