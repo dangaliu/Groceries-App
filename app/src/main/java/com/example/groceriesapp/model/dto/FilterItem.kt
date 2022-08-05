@@ -1,3 +1,8 @@
 package com.example.groceriesapp.model.dto
 
-data class FilterItem()
+import androidx.compose.runtime.State
+
+data class FilterItem(
+    val title: String,
+    var checked: Boolean
+)

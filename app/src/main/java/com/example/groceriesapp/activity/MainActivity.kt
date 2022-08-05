@@ -4,9 +4,8 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -15,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.groceriesapp.composable.component.bottombar.GroceryBottomBar
@@ -61,9 +61,27 @@ class MainActivity : ComponentActivity() {
             backgroundColor = Color.White,
             bottomBar = {
                 if (currentRoute in bottomScreens) {
-                    GroceryBottomBar(navController = navController)
+                    Surface(
+                        shape = RoundedCornerShape(topStart = 15.dp, topEnd = 15.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(92.dp),
+                        elevation = 10.dp,
+                        color = Color.White
+                    ) {
+                        Box(
+                            modifier = Modifier.fillMaxSize(),
+                            contentAlignment = Alignment.Center
+                        ) {
+                            GroceryBottomBar(
+                                navController = navController
+                            )
+                        }
+
+                    }
                 }
-            }
+            },
+            scaffoldState = scaffoldState
         ) { padding ->
             Box(
                 modifier = Modifier

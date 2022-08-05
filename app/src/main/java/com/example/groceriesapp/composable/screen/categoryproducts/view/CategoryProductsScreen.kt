@@ -11,6 +11,7 @@ import androidx.navigation.NavHostController
 import com.example.groceriesapp.composable.component.CategoryProductToolbar
 import com.example.groceriesapp.composable.component.GroceryItemComponent
 import com.example.groceriesapp.composable.screen.categoryproducts.viewmodel.CategoryProductsViewModel
+import com.example.groceriesapp.navigation.NavConstants
 
 @Composable
 fun CategoryProductsScreen(
@@ -19,12 +20,17 @@ fun CategoryProductsScreen(
     categoryName: String = "Beverages"
 ) {
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 24.dp)
     ) {
         val products = viewModel.categories.find { it.categoryTitle == categoryName }?.products
 
         Spacer(modifier = Modifier.height(15.dp))
-        CategoryProductToolbar()
+        CategoryProductToolbar(
+            onBackArrowClick = { navController.popBackStack() },
+            onFilterClick = { navController.navigate(NavConstants.filter) }
+        )
         Spacer(modifier = Modifier.height(30.dp))
         LazyVerticalGrid(
             columns = GridCells.Fixed(2), content = {

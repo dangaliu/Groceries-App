@@ -55,3 +55,10 @@ val screenTitleStyle = TextStyle(
     fontSize = 20.sp,
     fontWeight = FontWeight.Bold
 )
+
+val filterItemStyle = TextStyle(
+    color = Primary,
+    fontFamily = gilroy,
+    fontSize = 16.sp,
+    fontWeight = FontWeight.Medium
+)

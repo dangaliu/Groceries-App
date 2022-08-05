@@ -12,6 +12,7 @@ import com.example.groceriesapp.composable.screen.bottombar.explore.view.Explore
 import com.example.groceriesapp.composable.screen.bottombar.favourite.view.FavoriteScreen
 import com.example.groceriesapp.composable.screen.bottombar.shop.view.ShopScreen
 import com.example.groceriesapp.composable.screen.categoryproducts.view.CategoryProductsScreen
+import com.example.groceriesapp.composable.screen.filter.view.FilterScreen
 import com.example.groceriesapp.composable.screen.login_signup.view.LoginSignupScreen
 import com.example.groceriesapp.composable.screen.phone.view.PhoneAuthScreen
 import com.example.groceriesapp.composable.screen.select_location.view.SelectLocationScreen
@@ -50,6 +51,10 @@ fun GroceryNavigation(navController: NavHostController) {
         
         composable(route = NavConstants.categoryProducts) {
             CategoryProductsScreen(navController = navController)
+        }
+
+        composable(route = NavConstants.filter) {
+            FilterScreen(navController = navController)
         }
 
         // Bottom Bar Screens
