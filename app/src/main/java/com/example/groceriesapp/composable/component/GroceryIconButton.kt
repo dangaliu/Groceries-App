@@ -16,7 +16,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.groceriesapp.R
 import com.example.groceriesapp.ui.theme.GroceryIconButtonText
 import com.example.groceriesapp.ui.theme.gilroy
 
